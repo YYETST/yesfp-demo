@@ -295,6 +295,37 @@ public class StaBookBuildParam {
         datas.add(data);
         return datas;
     }
+    //新增个人票夹
+    public  static List<Object> addbills(){
+        List<Object> datas = new ArrayList<Object>();
+        Map<String, Object> data = new HashMap<String, Object>();
+        //发票代码
+        data.put("invoiceCode","211001111012");
+        //发票号码
+        data.put("invoiceNum","87650531");
+        data.put("billType","taxi");
+        data.put("accountUser","记账人");
+        data.put("accountNote","记账人备注");
+        data.put("data",buildData());
+        datas.add(data);
+        return datas;
+    }
+
+    private static Object buildData() {
+
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("date","20190101");
+        data.put("invoiceCode", "111001881001");
+        data.put("invoiceNum","09997919");
+        data.put("kind", "交通");
+        data.put("mileage", 7.5);
+        data.put("place", "北京市");
+        data.put("endTime","13:47");
+        data.put("startTime", "13:33");
+        data.put("totalAmount", 27.00);
+        return data;
+    }
+
     /**
      * 台账取消记账
      */
@@ -315,6 +346,24 @@ public class StaBookBuildParam {
         paramsMap.put("bills",accountBills());
         return paramsMap;
     }
+    //个人票夹新增
+    public  static Map<String, Object> add(){
+
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("billList",addbills());
+        return paramsMap;
+    }
+    public  static Map<String, Object> billDelete(){
+
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("summarys",summarys());
+        return paramsMap;
+    }
+
     /**
      * 飞机票、火车票，出租车台账查询
      */
@@ -325,7 +374,18 @@ public class StaBookBuildParam {
         paramsMap.put("submitDate_end","2020-06-11");
         return paramsMap;
     }
-
+    /**
+     * 报销台账查询详情信息接口
+     * */
+    public static Map<String,Object> query(){
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("billCode", "12345678");
+        paramsMap.put("billNum","1234567812");
+        paramsMap.put("billType","invoice");
+//        paramsMap.put("nsrsbh", "201609140000001");
+//        paramsMap.put("orgcode", "20160914001");
+        return paramsMap;
+    }
     /**
      * 个人票夹提交发票到报销台账_全票种
      * @return
@@ -351,13 +411,90 @@ public class StaBookBuildParam {
     Map<String, Object> data2 = new HashMap<String, Object>();
         data1.put("invoiceNum","68706393");
         data1.put("invoiceCode","042001700107");
+        data1.put("purchaserStatus",33);
         data1.put("billType","invoice");
         data2.put("invoiceNum","51266661");
         data2.put("invoiceCode","111001881002");
         data2.put("billType","taxi");
+        data2.put("purchaserStatus",1);
         datas.add(data1);
         datas.add(data2);
       return datas;
     }
 
+    public  static Map<String, Object> summary(){
+        Map<String, Object> data1 = new HashMap<String, Object>();
+        data1.put("invoiceNum","68706393");
+        data1.put("invoiceCode","042001700107");
+        data1.put("purchaserStatus",33);
+        data1.put("billType","invoice");
+
+        return data1;
+    }
+
+    public  static Map<String, Object> summaryWithoutStatus(){
+        Map<String, Object> data1 = new HashMap<String, Object>();
+        data1.put("invoiceNum","68706393");
+        data1.put("invoiceCode","042001700107");
+        data1.put("billType","invoice");
+
+        return data1;
+    }
+
+    public static Map<String, Object> buildInfo() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("orgcode", "20160914001");
+        return paramsMap;
+    }
+
+    public static Map<String, Object> changFapiaoStatus() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("summaries",summarys());
+        return paramsMap;    }
+    //根据号码代码获取信息
+    public static Map<String, Object> summar() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("summaries",summarys());
+        return paramsMap;
+    }
+    //根据号码代码获取个人票夹信息
+    public static Map<String, Object> detial() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("summary",summary());
+        return paramsMap;
+    }
+
+    public static Map<String, Object> billUpdate() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("invoiceNum","87650531");
+        paramsMap.put("billType","train");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("data",buildData());
+        return paramsMap;
+    }
+
+    public static Map<String, Object> view() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("pagenum",1);
+        paramsMap.put("summary",summaryWithoutStatus());
+        return paramsMap;
+    }
+
+    public static Map<String, Object> setUser() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usercode","001");
+        return paramsMap;
+    }
 }

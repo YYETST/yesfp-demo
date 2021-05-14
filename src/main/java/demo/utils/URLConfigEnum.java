@@ -11,7 +11,7 @@ public enum URLConfigEnum {
 
 
     //如果需要测试其他接口 直接在这里添加枚举即可
-
+    //-----------------------------------------------------------------------------------------------------------------------------------
     /**
      *开票
      *
@@ -37,6 +37,23 @@ public enum URLConfigEnum {
     //开票蓝票请求服务--发票拆分
     INSERT_WITH_SPLIT ("/invoiceclient-web/api/invoiceApply/insertWithSplit?appid="),
     /**
+     * 扫码开票
+     * */
+
+    SCAN("/output-tax/api/invoiceApply/insertForQRInvoice?appid="),
+
+    //申请红字信息表（购方销方）
+    READINFOAPPLY("/output-tax/api/redinfo-apply/insertWithRedApply?appid="),
+
+    //查询红字信息表参数
+    QUERYREAINFO("/output-tax/api/redinfo-apply/queryRedInfoApply/"),
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+
+    /**
      * 受票
      * 有些 url即在受票中使用又在个人票价使用
      * */
@@ -54,6 +71,9 @@ public enum URLConfigEnum {
     ACCOUNT_STATUS("/invoiceclient-web/api/reimburseCollection/accountStatus?appid="),
     //取消入账
     COLLECTION_CANCEL_ACCOUNT("/invoiceclient-web/api/reimburseCollection/cancelAccount?appid="),
+    //个人票夹发票提交到采购台账
+    FETCH("/piaoeda-web/api/einvoice/v2/fetchPurchase?appid="),
+
     //发票上传V2
     V2_UPLOADPDF("/input-tax/api/reimburseCollection/v2/uploadpdf?appid="),
     //OCR识别接口
@@ -77,11 +97,52 @@ public enum URLConfigEnum {
     TRAIN("/input-tax/api/bill-collections/train?pagenum=1&pagesize=15&appid="),
     //出租车台账查询
     TAXI("/input-tax/api/bill-collections/taxi?pagenum=1&pagesize=15&appid="),
+    //机打发票台账查询
+    MACHINE("/input-tax/api/bill-collections/machine?pagenum=1&pagesize=15&appid="),
+    //定额发票台账查询
+    QUOTA("/input-tax/api/bill-collections/quota?pagenum=1&pagesize=15&appid="),
+    //过路费发票台账查询
+    TOOLS("/input-tax/api/bill-collections/tolls?pagenum=1&pagesize=15&appid="),
+    //客运汽车发票台账查询
+    PASSENGER("/input-tax/api/bill-collections/passenger?pagenum=1&pagesize=15&appid="),
+
+    /**
+     * 查询详细
+     * */
+    DETAIL("/input-tax/api/bill-collections/detail?appid="),
+    /**
+     *报销台账置支付状态接口
+     * */
+    PAID ("/input-tax/api/bill-collections/paid?appid="),
+    /**
+     *报销台账置取消支付状态接口
+     * */
+    CANCELPAID ("/input-tax/api/bill-collections/cancel-paid?appid="),
+    /**
+     * 报销台账更新凭证号接口
+     * */
+    UPDATEVOUCHERID("/input-tax/api/bill-collections/update-voucherid?appid="),
+    //采购台账结算
+    PURCHASEACCOUNT("/input-tax/api/purchase-account/settle?appid="),
+    //采购台账取消结算
+    PURCHASEUNSET("/input-tax/api/purchase-account/unsettle?appid="),
+
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+
+    //-----------------------------------------------------------------------------------------------------------------------------------
 
     /**
      * 个人票夹
      * */
-
+    //个人票价列表查询
+    BILLQUERY("/piaoeda-web/api/bill/query?page=1&size=10&appid="),
+    //修改发票状态
+    PURCHASERSTATUS("/piaoeda-web/api/bill/purchaser-status?appid="),
+    //根据号码代码获取信息
+    SUMMARY("/piaoeda-web/api/bill/summary?appid="),
+    //个人票夹票据详情查询
+    BILLDETAIL("/piaoeda-web/api/bill/detail?appid="),
     //获取专票
     QUERY_INVOICE("/invoiceclient-web/api/vat/queryInvoice?appid="),
     //请求二维码信息
@@ -97,6 +158,20 @@ public enum URLConfigEnum {
 
     //个人票夹提交发票到报销台账_全票种
     COMMIT("/piaoeda-web/api/bill/v2/commit?appid="),
+    //个人票夹新增
+    BILLADD("/piaoeda-web/api/bill/add?appid="),
+    //个人票夹删除
+    BILLDELETE("/piaoeda-web/api/bill/delete?appid="),
+    //个人票夹修改
+    BILLUPDATE("/piaoeda-web/api/bill/update?appid="),
+    //个人票夹行程单预览
+    PREVIEW("/piaoeda-web/api/bill/itinerary/preview?appid="),
+    //个人票夹行程单下载
+    DOWNLOAD("/piaoeda-web/api/bill/itinerary/download?appid="),
+
+    //账号绑定验证
+    AUTHCHECK("/piaoeda-web/api/partner/v1/auth-check?appid="),
+    //-----------------------------------------------------------------------------------------------------------------------------------
 
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
     KEY_PATH("src/main/resources/certificate/pro22.pfx"),
@@ -125,5 +200,10 @@ public enum URLConfigEnum {
     public String getValue() {return value;}
     public String getUrl() {
         return DOMAIN + value + APPID;
+    }
+    //查询红字信息表编号
+    //appid用下方的可查出数据
+    public String queryRedInfo(String reqBillNo){
+        return "http://192.168.52.80"+value+reqBillNo+"?appid="+"yonyouEinvoiceTest2018";
     }
 }

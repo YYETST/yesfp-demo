@@ -48,11 +48,12 @@ public class PurchaseLedgerTest {
         /**
          * 取消入账
          **/
-        //result =CollCancelAccount();
+//        result =CollCancelAccount();
 
         /**
          * 个人票夹发票提交到采购平台
          * */
+//        result=commit();
 
         /**
          * 附件预览
@@ -61,12 +62,16 @@ public class PurchaseLedgerTest {
         /**
          * 采购台账结算
          * */
-
+//        result=purchase();
 
 
         /**
          * 采购台账取消结算
          * */
+        result=purchaseUnset();
+
+        System.out.println(result);
+
     }
 
 
@@ -183,7 +188,18 @@ public class PurchaseLedgerTest {
         return HttpClientUtil.jsonPost(URLConfigEnum.UPLOADPDF.getUrl(), paramsMap);
 
     }
+    //采购台账结算
+    public static String purchase() throws Exception {
+        Map<String, Object> paramsMap = ReimburseCollection.purchase();
+        return HttpClientUtil.jsonPost(URLConfigEnum.PURCHASEACCOUNT.getUrl(), paramsMap);
 
+    }
+    //采购台账取消结算
+    public static String purchaseUnset() throws Exception {
+        Map<String, Object> paramsMap = ReimburseCollection.purchase();
+        return HttpClientUtil.jsonPost(URLConfigEnum.PURCHASEACCOUNT.getUrl(), paramsMap);
+
+    }
     //发票取消上传
     public static String CollDelete() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.CollDelete();

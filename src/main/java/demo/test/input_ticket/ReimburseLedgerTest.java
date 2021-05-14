@@ -77,41 +77,44 @@ public class ReimburseLedgerTest {
         /**
          * 机打发票台账查询
          * */
-
+//        result=machine();
+//        System.out.println(result+"machine");
         /**
          * 定额发票台账查询
          * */
-
+//        result=quota();
         /**
          * 过路费发票台账查询
          * */
-
+//        result=tolls();
         /**
          * 客运汽车发票台账查询
          * */
-
+//        result=passenger();
         /**
          *报销台账查询详情信息接口
          *  */
-        //result=CollQuery();
+//        result=detail();
 
         /**
          *报销台账置支付状态接口
          * */
-
+        //result=paid();
         /**
          *报销台账置取消支付状态接口
          * */
-
+//        result=canclePaid();
         /**
          * 报销台账更新凭证号接口
          * */
-
+        //result=updateVoucherid();
 
         System.out.println(result);
 
 
     }
+
+
 
 
     //OCR识别接口v2
@@ -203,11 +206,88 @@ public class ReimburseLedgerTest {
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.TAXI.getUrl(), paramsMap);
     }
+    /**
+     * 机打发票台账查询
+     * */
+    public static String machine() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.find();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.MACHINE.getUrl(), paramsMap);
+    }
+    /**
+     * 定额发票台账查询
+     * */
+    public static String quota() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.find();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.QUOTA.getUrl(), paramsMap);
+    }
+    /**
+     * 客运汽车发票台账查询
+     * */
+    public static String passenger() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.find();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.PASSENGER.getUrl(), paramsMap);
+    }
+    /**
+     * 过路费发票台账查询
+     * */
+    public static String tolls() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.find();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.TOOLS.getUrl(), paramsMap);
+    }
+    /**
+     *报销台账置支付状态接口
+     * */
+    public static String paid() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.query();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.PAID.getUrl(), paramsMap);
+    }
+    /**
+     * 取消报销台账置支付状态接口
+     * */
+    public static String detail() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.query();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.DETAIL.getUrl(), paramsMap);
+    }
+    /**
+     * 报销台账置取消支付状态接口
+     */
+    public static String canclePaid() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.query();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.CANCELPAID.getUrl(), paramsMap);
+    }
+
+    /**
+     * 报销台账更新凭证号接口
+     */
+    public static String updateVoucherid() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.query();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.UPDATEVOUCHERID.getUrl(), paramsMap);
+    }
+
+    //    PAID ("/input-tax/api/bill-collections/paid&appid="),
+    //    /**
+    //     *报销台账置取消支付状态接口
+    //     * */
+    //    CANCELPAID ("/input-tax/api/bill-collections/cancel-paid&appid="),
+    //    /**
+    //     * 报销台账更新凭证号接口
+    //     * */
+    //    UPDATEVOUCHERID("input-tax/api/bill-collections/update-voucherid&appid="),
+
 
     //报销台账查询接口（新）
     public static String CollQuery() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.query();
         return HttpClientUtil.jsonPost(URLConfigEnum.QUERY.getUrl(), paramsMap);
     }
+
 }
 

@@ -12,7 +12,7 @@ import java.util.Map;
  * 个人全票种api测试类
  */
 public class PersonalTicketTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         String result = "";
         /**
@@ -27,19 +27,23 @@ public class PersonalTicketTest {
         /**
          * 个人票夹列表查询
          * */
-
+//        result=billQuery();
         /**
-         * 修改列表状态
+         * 修改发票状态
          * */
-
+//        result=purchaserStatus();
         /**
          * 根据号码代码获取信息
          * */
+//        result=summar();
 
+        /**
+         * 个人票夹票据详情查询
+         * */
+//        result=detail();
         /**
          * 个人票价附件预览
          * */
-
         /**
          * 个人票夹附件下载
          * */
@@ -48,16 +52,22 @@ public class PersonalTicketTest {
          *
          * 个人票夹新增
          * */
+//        result=add();
 
         /**
          *
          * 个人票夹删除
          * */
-
+//        result = billDelete();
         /**
          *
          * 个人票夹修改
          * */
+//        result=billUpdate();
+        /**
+         * 个人票价提交到企业台账
+         * */
+//        result=commit();
 
         /**
          * 台账报销
@@ -88,12 +98,11 @@ public class PersonalTicketTest {
         /**
          * 个人票夹行程单预览
          * */
-
+//        result=preview();
         /**
          * 个人票夹行程单下载
          * */
-
-
+//        result=download();
 
         System.out.println(result);
 
@@ -109,6 +118,43 @@ public class PersonalTicketTest {
         return HttpClientUtil.jsonPost(URLConfigEnum.RECOGNISE.getUrl(), paramsMap);
     }
 
+    public static String billQuery() throws Exception {
+        //构造POST表单Map
+        Map<String, Object> paramsMap = StaBookBuildParam.buildInfo();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.BILLQUERY.getUrl(), paramsMap);
+    }
+
+    //修改发票状态
+    public static String purchaserStatus() throws Exception {
+        //构造POST表单Map
+        Map<String, Object> paramsMap = StaBookBuildParam.changFapiaoStatus();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.PURCHASERSTATUS.getUrl(), paramsMap);
+    }
+
+    /**
+     * 个人票夹提交发票到报销台账_全票种
+     */
+    public static String commit() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.commit();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.COMMIT.getUrl(), paramsMap);
+    }
+
+    //根据号码代码获取信息
+    public static String summar() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.summar();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.SUMMARY.getUrl(), paramsMap);
+    }
+
+    //个人票夹票据详情查询
+    public static String detail() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.detial();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.BILLDETAIL.getUrl(), paramsMap);
+    }
 
 
     /**
@@ -154,6 +200,46 @@ public class PersonalTicketTest {
         Map<String, Object> paramsMap = StaBookBuildParam.delete();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.DELETE.getUrl(), paramsMap);
+    }
+
+    //个人票夹新增
+    private static String add() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.add();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.BILLADD.getUrl(), paramsMap);
+    }
+
+    //个人票夹删除
+    private static String billDelete() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.billDelete();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.BILLDELETE.getUrl(), paramsMap);
+    }
+
+    //个人票夹修改
+    private static String billUpdate() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.billUpdate();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.BILLUPDATE.getUrl(), paramsMap);
+    }
+    //
+    //    //个人票夹行程单预览
+    //    PERVIEW("/piaoeda-web/api/bill/itinerary/preview?appid="),
+    //    //个人票夹行程单下载
+    //    DOWNLOAD("/piaoeda-web/api/bill/itinerary/download?appid="),
+    //
+
+    //个人票夹行程单预览
+    private static String preview() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.view();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.PREVIEW.getUrl(), paramsMap);
+    }
+    //个人票夹行程单下载
+    private static String download() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.view();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.DOWNLOAD.getUrl(), paramsMap);
     }
 
 }

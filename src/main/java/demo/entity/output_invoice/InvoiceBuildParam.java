@@ -13,29 +13,52 @@ import java.util.*;
  */
 public class InvoiceBuildParam {
 
+
+    /**
+     * 扫码开票
+     * XSF_NSRSBH	String	20	是		销售方纳税人识别号
+     * JSHJ	Double	15,2	是		价税合计	两位小数
+     * ORGCODE	String	100	是		电子发票平台唯一标识，从电子发票平台获取。
+     * RQSJ	String	100	是		日期时间
+     * SHMC	String	100	是		商户名称
+     */
+    public static Map<String, Object> scanApply() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("XSF_NSRSBH", "9144011476190205X4");
+        paramsMap.put("JSHJ", "15.2");
+        paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("RQSJ", "2021-01-01");
+        paramsMap.put("SHMC", "接口测试wrk");
+        paramsMap.put("items",buildItems());
+        paramsMap.put("FPQQLSH","12345678910aaasssddd");
+        paramsMap.put("GMF_MC", "广州佰仕德材料科技有限公司");
+        paramsMap.put("GMF_NSRSBH", "91440101MA5CR3FU35");
+        paramsMap.put("GMF_DZDH", "广州市花都区红棉大道北16号4楼4B07室 020-61796191");
+        paramsMap.put("GMF_YHZH", "中国农业银行股份有限公司广州花都名门支行 44087001040011474");
+        return paramsMap;
+    }
+
     /**
      * 构造获取专票参数
-     *
      */
     public static Map<String, Object> buildQueryInvoiceParam() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
-        paramsMap.put("yfpDm","");
-        paramsMap.put("yfpHm","");
+        paramsMap.put("yfpDm", "");
+        paramsMap.put("yfpHm", "");
         paramsMap.put("orgcode", "20160914001");
-        paramsMap.put("rq_q","2021-01-01");
-        paramsMap.put("rq_z","2021-05-06");
-        paramsMap.put("period","202101");
+        paramsMap.put("rq_q", "2021-01-01");
+        paramsMap.put("rq_z", "2021-05-06");
+        paramsMap.put("period", "202101");
         return paramsMap;
     }
 
     /**
      * 构造 专票红冲状态查询接口 参数
-     *
      */
     public static Map<String, Object> buildRedStateTotalParam() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
-        paramsMap.put("yfpDm","100000064388");
-        paramsMap.put("yfpHm","55216153");
+        paramsMap.put("yfpDm", "100000064388");
+        paramsMap.put("yfpHm", "55216153");
         return paramsMap;
     }
 
@@ -78,13 +101,12 @@ public class InvoiceBuildParam {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         List<Object> datas = new ArrayList<>();
         Map<String, String> requestdatas = new HashMap();
-        requestdatas.put("FPQQLSH",buildFpqqlsh());
-        requestdatas.put("XSF_NSRSBH","9144011476190205X4");
+        requestdatas.put("FPQQLSH", buildFpqqlsh());
+        requestdatas.put("XSF_NSRSBH", "9144011476190205X4");
         datas.add(requestdatas);
         paramsMap.put("requestdatas", new GsonBuilder().create().toJson(datas));
         return paramsMap;
     }
-
 
 
     /**
@@ -100,36 +122,39 @@ public class InvoiceBuildParam {
         paramsMap.put("autoAudit", "true");
         return paramsMap;
     }
+
     /**
      * 开票申请审核通过
      */
-    public static Map<String, Object> issue(){
+    public static Map<String, Object> issue() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("requestdatas", buildRequestDatas());
         paramsMap.put("autoAudit", true);
         return paramsMap;
-}
+    }
+
     /**
      * 发票红冲请求服务
-     *  电子发票部分红冲
+     * 电子发票部分红冲
      */
-    public static  Map<String,Object> red(){
+    public static Map<String, Object> red() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("requestdatas", redRequestDatas());
         paramsMap.put("url", buildUrlConfigs());
         paramsMap.put("autoAudit", "false");
         return paramsMap;
     }
+
     /**
      * 开票蓝票请求服务--发票拆分
      */
-    public static  Map<String,Object> insertWithSplit(){
+    public static Map<String, Object> insertWithSplit() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("requestdatas", buildRequestDatasSplit());
         paramsMap.put("url", buildUrlConfigs());
         paramsMap.put("autoAudit", "true");
-        paramsMap.put("email",buildEmailConfigs());
-        paramsMap.put("sms",buildSmsConfigs());
+        paramsMap.put("email", buildEmailConfigs());
+        paramsMap.put("sms", buildSmsConfigs());
         return paramsMap;
     }
 
@@ -196,6 +221,7 @@ public class InvoiceBuildParam {
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
     }
+
     /**
      * 构造redRequestdatas
      */
@@ -209,7 +235,7 @@ public class InvoiceBuildParam {
         data.put("fpHm", "21427457");
         data.put("JSHJ", -1);
         data.put("items", buildItems());
-      //  data.put("ORGCODE", "");//91110105MA0084MW37
+        //  data.put("ORGCODE", "");//91110105MA0084MW37
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -217,6 +243,7 @@ public class InvoiceBuildParam {
 
     /**
      * 拆分
+     *
      * @return
      */
     private static String buildRequestDatasSplit() {
@@ -231,11 +258,12 @@ public class InvoiceBuildParam {
         data.put("GMF_MC", "接口测试组织-请勿修改");
         data.put("JSHJ", 4000000);
         data.put("items", buildItems());
-       // data.put("items", buildItems1());
+        // data.put("items", buildItems1());
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
     }
+
     /**
      * 构造request发票明细
      */
@@ -250,14 +278,14 @@ public class InvoiceBuildParam {
         data.put("GGXH", "25kg/桶");
         data.put("DW", "千克");
         data.put("XMSL", 2);
-       // data.put("SE", -57.52);
+        // data.put("SE", -57.52);
         //税率16%需要写成0.16的格式
         data.put("SL", 0.16);
         //SPBM字段为商品税收分类编码，不同的商品会有不同的编码，不对应的话会影响报税，需要咨询下公司财务
         data.put("SPBM", "1070213070000000000");
 
-        data.put("FPHXZ","1");
-        data.put("HH","1");
+        data.put("FPHXZ", "1");
+        data.put("HH", "1");
         items.add(data);
 
         data1.put("XMJSHJ", 40);
@@ -271,9 +299,9 @@ public class InvoiceBuildParam {
         data1.put("SL", 0.16);
         //SPBM字段为商品税收分类编码，不同的商品会有不同的编码，不对应的话会影响报税，需要咨询下公司财务
         data1.put("SPBM", "1070213070000000000");
-        data1.put("FPHXZ","2");
-        data1.put("HH","2");
-        data1.put("ZKHHH","1");
+        data1.put("FPHXZ", "2");
+        data1.put("HH", "2");
+        data1.put("ZKHHH", "1");
         items.add(data1);
 
         data2.put("XMJSHJ", 10);

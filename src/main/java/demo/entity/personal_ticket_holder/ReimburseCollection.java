@@ -68,6 +68,15 @@ public class ReimburseCollection {
         paramsMap.put("invoices", invoices());
         return paramsMap;
     }
+    //采购台账结算
+    public static Map<String, Object> purchase() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        //用户账号
+        paramsMap.put("nsrsbh", "201609140000001");
+        paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("invoices", invoices());
+        return paramsMap;
+    }
     public static List<Object> invoices(){
         List<Object> files = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
