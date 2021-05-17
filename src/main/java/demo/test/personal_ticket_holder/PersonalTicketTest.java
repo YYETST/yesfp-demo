@@ -18,7 +18,7 @@ public class PersonalTicketTest {
         /**
          * ocr识别接口v2
          * */
-        //result=recognise();
+        result=recognise();
 
         /**
          * ocr接口图片预览接口

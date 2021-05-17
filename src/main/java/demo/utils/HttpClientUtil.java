@@ -1,6 +1,7 @@
 package demo.utils;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import demo.crypto.SignHelper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -17,6 +18,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
@@ -203,6 +205,8 @@ public class HttpClientUtil {
         try {
             httpClient = createClient(url, getHttpConfig(configList));
             HttpPut httpPut = new HttpPut(url);
+//            httpPut.addHeader("sign", SignHelper.sign((Map)params));
+
             if (params != null && params.size() > 0) {
                 List<NameValuePair> pairs = new ArrayList<>();
                 for (Entry<String, Object> entry : params.entrySet()) {
@@ -455,6 +459,35 @@ public class HttpClientUtil {
         URL url = new URL(reqUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         return conn;
+    }
+    /**
+     * 访问不带参数的url
+     * */
+    public static String put(String q) throws IOException {
+
+        //构造POST表单Map
+//        System.out.println(URLConfigEnum.QUERYREAINFO.queryRedInfo(q));
+        String s="";
+        //1.获得一个httpclient对象
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        //2.生成一个get请求
+        HttpGet httpget = new HttpGet(q);
+//        httpget.setHeader( SignHelper.sign((Map)params));
+        //3.执行get请求并返回结果
+        CloseableHttpResponse response = httpclient.execute(httpget);
+
+        try {
+
+            HttpEntity resEntity = response.getEntity();
+            if(resEntity != null){
+                s=EntityUtils.toString(resEntity,"utf-8");
+            }
+
+        } finally {
+            response.close();
+        }
+        JSONObject obj = JSONObject.parseObject(s);
+        return String.valueOf(obj);
     }
 
     private static class TrustAnyTrustManager implements X509TrustManager {

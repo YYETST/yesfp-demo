@@ -76,4 +76,5 @@ public class Base64Util {
         //return new BASE64Encoder().encode(data).replaceAll("\n", "").replaceAll("\r", "");
         return Base64.getEncoder().encodeToString(data);
     }
+
 }

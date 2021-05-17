@@ -1,7 +1,5 @@
 package demo.entity.output_invoice;
 
-import com.google.gson.GsonBuilder;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +8,7 @@ import java.util.Map;
 /**
  * @author wrk
  * @time 2021-05-14 13:06
+ * 扫码开票方法
  */
 public class InsertForQRInvoice {
 
@@ -28,13 +27,6 @@ public class InsertForQRInvoice {
     public static Map<String, Object> buildRequestDatasQR() {
         Map<String, Object> data = new HashMap<>();
         //测试环境请一定要使用测试纳税人识别号
-        data.put("fhr","123");
-        data.put("fplx","1");
-        data.put("jshj","10.00");
-        data.put("kpr","wrk");
-        data.put("org_id","52");
-        data.put("skr","www");
-        data.put("xsf_mc","测试");
         data.put("XSF_NSRSBH", "201609140000001");
         //组织编码，测试环境请一定使用测试环境的组织编码
         data.put("ORGCODE", "20160914001");
@@ -53,7 +45,7 @@ public class InsertForQRInvoice {
      * @return 发票请求流水号
      */
     private static String  buildFpqqlsh() {
-        return "164291i05l0000sKs";
+        return "164291i05l0003sKs234";
     }
 
 

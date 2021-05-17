@@ -47,6 +47,15 @@ public enum URLConfigEnum {
 
     //查询红字信息表参数
     QUERYREAINFO("/output-tax/api/redinfo-apply/queryRedInfoApply/"),
+
+    //未开票查询
+    RESULT("/output-tax/api/invoice-will/result?appid="),
+    //未开票管理新增单据
+    SAVE("/output-tax/api/invoice-will/save?appid="),
+
+    //未开票记录变更查询
+    CHANGE("/output-tax/api/invoice-will/changes?appid="),
+
     //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -171,6 +180,19 @@ public enum URLConfigEnum {
 
     //账号绑定验证
     AUTHCHECK("/piaoeda-web/api/partner/v1/auth-check?appid="),
+    //获取加密公钥
+    PUBKEY("/cas/v1/pubkey?appid="),
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    /**
+     * ofd能力接口
+     * */
+    //OFD渲染
+    RENDER("/ofd/api/render?appid="),
+    //ofd数据提取
+    INVOCEDATA("/ofd/api/invoice-data?appid="),
     //-----------------------------------------------------------------------------------------------------------------------------------
 
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
@@ -201,9 +223,12 @@ public enum URLConfigEnum {
     public String getUrl() {
         return DOMAIN + value + APPID;
     }
+    public String getUrl1(String usercode) {
+        return DOMAIN + value + APPID+"&usercode="+usercode;
+    }
     //查询红字信息表编号
     //appid用下方的可查出数据
     public String queryRedInfo(String reqBillNo){
-        return "http://192.168.52.80"+value+reqBillNo+"?appid="+"yonyouEinvoiceTest2018";
+        return DOMAIN+value+reqBillNo+"?appid="+APPID;
     }
 }

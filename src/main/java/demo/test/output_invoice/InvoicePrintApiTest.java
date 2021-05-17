@@ -1,6 +1,7 @@
 package demo.test.output_invoice;
 
 import demo.entity.output_invoice.InvoiceBuildParam;
+import demo.entity.output_invoice.InvoicePrint;
 import demo.utils.HttpClientUtil;
 import demo.utils.URLConfigEnum;
 
@@ -20,7 +21,7 @@ public class InvoicePrintApiTest {
     }
 
     public static String taxPrint() throws Exception{
-        Map<String, Object> paramsMap = InvoiceBuildParam.buildTaxPrintParam();
+        Map<String, Object> paramsMap = InvoicePrint.buildTaxPrintParam();
         return HttpClientUtil.jsonPost(URLConfigEnum.TAX_PRINT.getUrl(), paramsMap);
     }
 }

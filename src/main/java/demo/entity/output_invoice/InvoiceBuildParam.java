@@ -84,6 +84,21 @@ public class InvoiceBuildParam {
 
         return paramsMap;
     }
+    /**
+     * 未开票查询
+     */
+    public static Map<String, Object> result() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        //发票代码
+        paramsMap.put("lyid", "1");
+        //发票号码
+        paramsMap.put("djqqlsh", "23770399");
+        paramsMap.put("orgCode", "20160914001");
+        paramsMap.put("pageNum", "1");
+        paramsMap.put("orgSize", "20160914001");
+
+        return paramsMap;
+    }
 
     /**
      * 构造 开票状态查询服务 表单数据
@@ -343,4 +358,53 @@ public class InvoiceBuildParam {
     }
 
 
+    public static Map<String, Object> save() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        //发票代码
+        paramsMap.put("lyid", "1");
+        //发票号码
+        paramsMap.put("djqqlsh", "23770399");
+        paramsMap.put("orgCode", "20160914001");
+        paramsMap.put("pageNum", "1");
+        paramsMap.put("orgSize", "20160914001");
+        paramsMap.put("GMF_MC", "广州佰仕德材料科技有限公司");
+        paramsMap.put("GMF_NSRSBH", "91440101MA5CR3FU35");
+        paramsMap.put("GMF_DZDH", "广州市花都区红棉大道北16号4楼4B07室 020-61796191");
+        paramsMap.put("GMF_YHZH", "中国农业银行股份有限公司广州花都名门支行 44087001040011474");
+
+        paramsMap.put("zdrq","2020-09-09");
+        paramsMap.put("invoiceWillBs",buildWillbs());
+        return paramsMap;
+    }
+
+    private static Object buildWillbs() {
+
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("XMMC", "硅胶5299B");
+        paramsMap.put("XMBM", "202020012");
+        paramsMap.put("GGXH", "25kg/桶");
+        paramsMap.put("DW", "千克");
+        paramsMap.put("XMSL", 2);
+        paramsMap.put("XMJSHJ", 40);
+        paramsMap.put("hh","1");
+        paramsMap.put("SPBM", "1070213070000000000");
+        paramsMap.put("SL", 0.16);
+        return paramsMap;
+    }
+
+    /**
+     * 未开票记录变更查询 报错
+     * */
+    public static Map<String, Object> change() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+
+        //发票号码
+        paramsMap.put("beginTime","2019-10-24 16:31:15");
+        paramsMap.put("endTime","2021-01-01 16:31:15");
+//        paramsMap.put("orgCode", "20160914001");
+        paramsMap.put("pageNum", 2);
+        paramsMap.put("pageSize", 15);
+
+        return paramsMap;
+    }
 }

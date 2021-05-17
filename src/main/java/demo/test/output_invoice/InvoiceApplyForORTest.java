@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public class InvoiceApplyForORTest {
     public static void main(String[] args) throws Exception {
+        //参数问题 不知道开票信息的参数
         System.out.println(scanApply());
     }
 

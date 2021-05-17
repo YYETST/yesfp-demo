@@ -9,9 +9,12 @@ import java.util.Map;
 public class MobileLoginTest {
 
   public static void main(String[] args) {
-//    testLogin();
-//    testQuery();
-    test();
+    testLogin();
+    String username = "17600104874";
+    String password = "xiaobo0307hao";
+    //token值每查询一次改变一次
+    testQuery(MobileLoginUtils.loginV2(username,password));
+    test(MobileLoginUtils.loginV2(username,password));
   }
 
   public static void testLogin() {
@@ -26,10 +29,10 @@ public class MobileLoginTest {
 
   }
 
-  public static void testQuery() {
+  public static void testQuery(String token) {
 
     //登录时获得的token
-    String token = "NmM5MWEyZGYtZDY1My00MDBlLWI3MmQtODk0ODFkODk2N2Jk";
+
 
     String url = "https://yesfp.yonyoucloud.com/piaoeda-web/mobile/invoices/advancequery?page=1&size=5&token="+token;
     Map<String, Object> entity = new HashMap<>();
@@ -43,9 +46,9 @@ public class MobileLoginTest {
 
   }
 
-  public static void test() {
-    String token = "NmM5MWEyZGYtZDY1My00MDBlLWI3MmQtODk0ODFkODk2N2Jk";//登录时获得的token
-
+  public static void test(String token) {
+//    String token = "YWVmYjQ2NzAtMGI4MS00NjE5LWIwNmEtNzE5ZTdiNWNhODJk";//登录时获得的token
+    //token值每查询一次改变一次  所以不能使用固定token 应该
     String url = "https://yesfp.yonyoucloud.com/piaoeda-web/mobile/invoices/advancequery?page=1&size=5&token="+token;
     Map<String, Object> entity = new HashMap<>();
     entity.put("fpjz", "0");
