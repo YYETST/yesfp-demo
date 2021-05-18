@@ -90,10 +90,10 @@ public class InvoiceWill {
     //新增红字信息表
     public static Map<String, Object> apply() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
-        paramsMap.put("orgCode", "20160914001");
+        paramsMap.put("orgcode", "20160914001");
         paramsMap.put("reqMemo", "1100000000");
         paramsMap.put("GMF_MC", "用友金融信息技术股份有限公司123");
-        paramsMap.put("GMF_NSRSBH", "111222333456333");
+        paramsMap.put("GMF_NSRSBH", "201609140000001");
         paramsMap.put("XSF_NSRSBH", "111222333456333");//91110105MA0084MW37
         paramsMap.put("XSF_MC", "测试333");
         paramsMap.put("kprq","202101");

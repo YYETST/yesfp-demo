@@ -20,9 +20,9 @@ public class InvoiceWillTest {
         //新增未开票
 //        result=save();
         //开票状态查询服务
-//        result=queryInvoiceStatus();
+        result=queryInvoiceStatus();
         //未开票记录变更查询
-        result=change();
+//        result=change();
         System.out.println(result);
 
     }

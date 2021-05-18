@@ -22,6 +22,6 @@ public class InvoiceApplyForORTest {
         //构造POST表单Map
         Map<String, Object> paramsMap = InsertForQRInvoice.buildRequestDatasQR();
         System.out.println(paramsMap);
-        return HttpClientUtil.post(URLConfigEnum.SCAN.getUrl(), (Map) paramsMap);
+        return HttpClientUtil.jsonPost(URLConfigEnum.SCAN.getUrl(), (Map) paramsMap);
     }
 }
