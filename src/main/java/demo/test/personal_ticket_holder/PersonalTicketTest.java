@@ -117,7 +117,7 @@ public class PersonalTicketTest {
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.RECOGNISE.getUrl(), paramsMap);
     }
-
+    //个人票夹列表查询
     public static String billQuery() throws Exception {
         //构造POST表单Map
         Map<String, Object> paramsMap = StaBookBuildParam.buildInfo();

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Render {
-
+    //提供ofd文件并解析成base64
     public static Map<String, Object> render() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
 //        paramsMap.put("type","png");

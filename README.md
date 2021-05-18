@@ -10,18 +10,21 @@
 - crypto 放置密钥相关的处理类
 - entity 放置参数构建类
 - test 放置接口测试的入口类
+- utils 放置请求相关的工具类
 
-######  test\personal_ticket_holder对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的个人票夹测试类
+######  test\personal_ticket_holder对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的个人票夹测试类 与openApi目录相对应
 
-###### test\ofd对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的OFD能力测试类
+###### ![20210518111304](pic\20210518111304.png)
 
 ######         test\output_invoice对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的销项开票测试类
 
+![20210518112221](pic\20210518112221.png)
+
 ######        test\input_ticket对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的进程受票测试类
 
+![20210518112034](pic\20210518112034.png)
 
-
-- utils 放置请求相关的工具类
+######  test\ofd对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的ofd能力
 
 #### 证书
 - resources/certificate/pro22.pfx
@@ -31,7 +34,7 @@
 - resources/certificate/全票种-直接对接台账（ocr方式，不通过个人票夹）.pdf
 - resources/certificate/电子发票报销应用OpenAPI第2版(包含电票上传).html
 ## 说明
-#### BuildParam.java放置电子发票参数
+#### InvoiceBuildParam 放置销项开票中 开票申请所需参数方法
 
 - buildTaxPrintParam() 构造发票打印数据
 - buildInsertWithArrayPostParam() 构造开票蓝票请求服务 表单数据
@@ -49,7 +52,7 @@
 不要包含window系统文件名限制的特殊字符
 
 
-#### StaBookBuildParam.java放置全票种参数
+#### StaBookBuildParam.java放置进程受票中 报销台账全票种参数
 
 - buildRecognisePostParam()  OCR识别
 -  OCR_Save() 识别结果保存台帐
@@ -70,7 +73,15 @@
 - commit() 个人票夹提交发票到报销台账_全票种
 - summary() 个人票夹提交发票到报销台账_全票种中summary参数设置
 
-#### ReimburseCollection.java放置电子发票报销应用参数
+#### ReimburseCollection.java放置个人票夹中 个人全票种中
+
+
+
+
+
+
+
+#### 应用参数
 
 -  uploadpdf()  发票上传与发票上传V2，V2返回值增加疑票状态
 -  pdfFiles() uploadpdf中pdfFile的参数配置

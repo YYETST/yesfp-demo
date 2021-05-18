@@ -33,12 +33,12 @@ public class RedInfoApplyTest {
 //        result=qurreyRedInfo("1391635497610928128");
         System.out.println(result);
     }
-
+    //申请红字信息表  报错9999
     private static String applyRedInfo() throws Exception {
         Map<String, Object> paramsMap = InvoiceWill.apply();
         return HttpClientUtil.post(URLConfigEnum.READINFOAPPLY.getUrl(), (Map) paramsMap);
     }
-
+    //查询红字信息表
     public static String qurreyRedInfo(String q) throws Exception {
         Map<String, Object> paramsMap = new HashMap<>();
         System.out.println(URLConfigEnum.QUERYREAINFO.queryRedInfo(q));

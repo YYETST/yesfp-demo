@@ -159,6 +159,7 @@ public class StaBookBuildParam {
         data.put("fuelSurcharge",30);
         return data;
     }
+   // 航空电子行程单DATA参数构造
     public static List<Object>itemList(){
         List<Object> items = new ArrayList<Object>();
         Map<String, Object> item = new HashMap<String, Object>();
@@ -246,6 +247,9 @@ public class StaBookBuildParam {
         return paramsMap;
 
     }
+    /**
+     * 台账报销参数构造
+     */
     public static List<Object>  reimbursedBills(){
         List<Object> datas = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
@@ -310,7 +314,7 @@ public class StaBookBuildParam {
         datas.add(data);
         return datas;
     }
-
+    //新增个人票夹参数构造
     private static Object buildData() {
 
         Map<String, Object> data = new HashMap<String, Object>();
@@ -355,6 +359,8 @@ public class StaBookBuildParam {
         paramsMap.put("billList",addbills());
         return paramsMap;
     }
+
+    //个人票夹删除
     public  static Map<String, Object> billDelete(){
 
         Map<String, Object> paramsMap = new HashMap<String, Object>();
@@ -421,7 +427,7 @@ public class StaBookBuildParam {
         datas.add(data2);
       return datas;
     }
-
+    //根据号码代码获取个人票夹信息参数构造
     public  static Map<String, Object> summary(){
         Map<String, Object> data1 = new HashMap<String, Object>();
         data1.put("invoiceNum","68706393");
@@ -431,7 +437,7 @@ public class StaBookBuildParam {
 
         return data1;
     }
-
+    //个人票夹行程单预览下载所需参数构造
     public  static Map<String, Object> summaryWithoutStatus(){
         Map<String, Object> data1 = new HashMap<String, Object>();
         data1.put("invoiceNum","68706393");
@@ -440,7 +446,7 @@ public class StaBookBuildParam {
 
         return data1;
     }
-
+    //个人票夹列表查询参数构造
     public static Map<String, Object> buildInfo() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("usermobile", "15011181852");
@@ -448,7 +454,7 @@ public class StaBookBuildParam {
         paramsMap.put("orgcode", "20160914001");
         return paramsMap;
     }
-
+    //更改发票状态
     public static Map<String, Object> changFapiaoStatus() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("usermobile", "15011181852");
@@ -472,7 +478,7 @@ public class StaBookBuildParam {
         paramsMap.put("summary",summary());
         return paramsMap;
     }
-
+    //个人票夹修改
     public static Map<String, Object> billUpdate() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("usermobile", "15011181852");
@@ -482,7 +488,7 @@ public class StaBookBuildParam {
         paramsMap.put("data",buildData());
         return paramsMap;
     }
-
+    //个人票夹行程单预览下载所需参数
     public static Map<String, Object> view() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("usermobile", "15011181852");
@@ -491,10 +497,10 @@ public class StaBookBuildParam {
         paramsMap.put("summary",summaryWithoutStatus());
         return paramsMap;
     }
-
-    public static Map<String, Object> setUser() {
-        Map<String, Object> paramsMap = new HashMap<String, Object>();
-        paramsMap.put("usercode","001");
-        return paramsMap;
-    }
+//
+//    public static Map<String, Object> setUser() {
+//        Map<String, Object> paramsMap = new HashMap<String, Object>();
+//        paramsMap.put("usercode","001");
+//        return paramsMap;
+//    }
 }

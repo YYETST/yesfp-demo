@@ -87,7 +87,7 @@ public class InvoiceWill {
         paramsMap.put("SL", 0.16);
         return paramsMap;
     }
-
+    //新增红字信息表
     public static Map<String, Object> apply() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("orgCode", "20160914001");

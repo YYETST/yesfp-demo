@@ -20,13 +20,13 @@ public class OfdRenderTest {
 //        String result=render();
         String reslt2=invoceData();
     }
-
+    //ofd渲染
     public static String render() throws Exception {
         //构造POST表单Map
         Map<String, Object> paramsMap = Render.render();
         return HttpClientUtil.post(URLConfigEnum.RENDER.getUrl(), (Map) paramsMap);
     }
-
+    //ofd数据提取
     public static String invoceData() throws Exception {
         //构造POST表单Map
         Map<String, Object> paramsMap = Render.render();
