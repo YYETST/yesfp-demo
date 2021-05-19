@@ -14,15 +14,15 @@
 
 ######  test\personal_ticket_holder对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的个人票夹测试类 与openApi目录相对应
 
-###### ![20210518111304](pic\20210518111304.png)
+###### ![20210518111304](.\pic\20210518111304.png)
 
 ######         test\output_invoice对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的销项开票测试类
 
-![20210518112221](pic\20210518112221.png)
+![20210518112221](.\pic\20210518112221.png)
 
 ######        test\input_ticket对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的进程受票测试类
 
-![20210518112034](pic\20210518112034.png)
+![20210518112034](.\pic\20210518112034.png)
 
 ######  test\ofd对应[税务云OpenAPI](https://fapiao.yonyoucloud.com/apidoc/) 下的ofd能力
 
