@@ -109,12 +109,38 @@ public class ReimburseLedgerTest {
          * */
         //result=updateVoucherid();
 
+        /**
+         * 查验并缓存
+         * */
+        result=verify();
+
+
+        /**
+         * 提交保存到报销台账  token从查验中获取
+         * 发票保存token；1张发票对应1个saveToken。
+         * 此token有效期为10分钟，超过时长此token失效，需要重新查验。token只能使用一次。
+         * */
+        result=submit();
         System.out.println(result);
 
 
     }
 
+    //提交保存到报销台账
+    public static String submit() throws Exception {
+        //构造POST表单Map
+        Map<String, Object> paramsMap = StaBookBuildParam.submit();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.SUBMIT.getUrl(), paramsMap);
+    }
 
+    //查验并缓存
+    public static String verify() throws Exception {
+        //构造POST表单Map
+        Map<String, Object> paramsMap = StaBookBuildParam.verfiy();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.VERIFY.getUrl(), paramsMap);
+    }
 
 
     //OCR识别接口v2

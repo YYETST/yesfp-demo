@@ -103,12 +103,10 @@ public class PersonalTicketTest {
          * 个人票夹行程单下载
          * */
 //        result=download();
-
-        System.out.println(result);
-
-
+        /**
+         * 查验并缓存
+         * */
     }
-
 
     //OCR识别接口v2
     public static String recognise() throws Exception {

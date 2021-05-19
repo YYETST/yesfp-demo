@@ -91,6 +91,7 @@ public class InvoiceWill {
     public static Map<String, Object> apply() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("xxbbh","2018011906");
         paramsMap.put("reqMemo", "1100000000");
         paramsMap.put("GMF_MC", "用友金融信息技术股份有限公司123");
         paramsMap.put("GMF_NSRSBH", "201609140000001");
@@ -101,7 +102,9 @@ public class InvoiceWill {
         paramsMap.put("hjje",-99.01);
         paramsMap.put("hjse",-0.99);
         paramsMap.put("jshj",-100);
-        paramsMap.put("reqBillNo","3211232123");
+        paramsMap.put("reqBillNo","3211ss232123");
+        paramsMap.put("resBillNo","88888888");
+
 
         return paramsMap;
     }

@@ -26,6 +26,24 @@ public class StaBookBuildParam {
         paramsMap.put("file", Base64Util.NetImageToBase64("https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1590057248&di=a298d5f9728d9ded45906a643d8b8b2d&src=http://5b0988e595225.cdn.sohucs.com/images/20180810/75d14550cff44cf4bcc0346dd50c3aae.jpeg"));//ImageToBase64("D:\\1.png"));
         return paramsMap;
     }
+    //查验并缓存
+    public static Map<String, Object> verfiy() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("nsrsbh", "201609140000001");
+        paramsMap.put("submitter", "kw");
+        paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("invoices", buildinvoices());
+        return paramsMap;
+    }
+    //保存
+    public static Map<String, Object> submit() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("nsrsbh", "201609140000001");
+        paramsMap.put("submitter", "kw");
+        paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("invoices", buildSaveinvoices());
+        return paramsMap;
+    }
     /**
      * 识别结果保存台帐
      */
@@ -329,7 +347,46 @@ public class StaBookBuildParam {
         data.put("totalAmount", 27.00);
         return data;
     }
+    //新增个人票夹参数构造
 
+    //      "srcBillCode" : "业务系统单据号",
+    //      "srcapp":""
+    //    },
+    private static Object buildinvoices() {
+        List<Object> datas = new ArrayList<Object>();
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("hjje",1395.28);
+        data.put("jshj",1479.00);
+        data.put("fpDm","3100201130");
+        data.put("kprq","20210421");
+        data.put("fpHm","51143619");
+        data.put("jym","162191");
+        data.put("srcBillType","invoice");
+        data.put("srcBillCode", "51143619");
+        datas.add(data);
+        return datas;
+    }
+
+    //新增个人票夹参数构造 {
+
+    //      "srcBillCode" : "业务系统单据号",
+    //      "srcapp":""
+    //    },
+    private static Object buildSaveinvoices() {
+        List<Object> datas = new ArrayList<Object>();
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("hjje",5000);
+        data.put("jshj","5600");
+        data.put("fpDm","211001111012");
+        data.put("kprq","20171018");
+        data.put("fpHm","87650531");
+        data.put("jym","557129");
+        data.put("srcBillType","taxi");
+        data.put("srcBillCode", "23456789");
+        data.put("saveToken","0f91a474-ec93-46b1-bf3f-b5a40f1d7e26");
+        datas.add(data);
+        return datas;
+    }
     /**
      * 台账取消记账
      */

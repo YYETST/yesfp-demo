@@ -27,13 +27,13 @@ public class RedInfoApplyTest {
     private static String s=""    ;
     public static void main(String[] args) throws Exception {
         String result="";
-        //申请红字信息表  报错9999
-//       result=applyRedInfo();
+        //申请红字信息表
+       result=applyRedInfo();
         //查询红字信息表
-        result=qurreyRedInfo("3211232123");
+        result=qurreyRedInfo("1387992599455621120");
         System.out.println(result);
     }
-    //申请红字信息表  报错9999
+    //申请红字信息表
     private static String applyRedInfo() throws Exception {
         Map<String, Object> paramsMap = InvoiceWill.apply();
         return HttpClientUtil.jsonPost(URLConfigEnum.READINFOAPPLY.getUrl(), (Map) paramsMap);

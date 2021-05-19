@@ -163,8 +163,9 @@ public enum URLConfigEnum {
 
     //用户同步
     SYNC_USER("/piaoeda-web/api/einvoice/v2/sync-user?appid="),
-
-
+    //ocr识别后 查验并缓存
+    VERIFY("/invoiceclient-web/api/reimburseCollection/ncc/verify_and_save?appid="),
+    SUBMIT("/invoiceclient-web/api/reimburseCollection/ncc/submit?appid="),
     //个人票夹提交发票到报销台账_全票种
     COMMIT("/piaoeda-web/api/bill/v2/commit?appid="),
     //个人票夹新增
